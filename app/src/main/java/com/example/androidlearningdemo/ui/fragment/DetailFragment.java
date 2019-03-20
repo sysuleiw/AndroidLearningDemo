@@ -1,7 +1,9 @@
 package com.example.androidlearningdemo.ui.fragment;
 
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,13 +11,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.example.androidlearningdemo.R;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -23,10 +26,10 @@ import butterknife.ButterKnife;
  * Use the {@link DetailFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DetailFragment extends Fragment implements RequestListener<String, GlideDrawable> {
+public class DetailFragment extends Fragment implements RequestListener<Drawable> {
 
     private String url;
-    @Bind(R.id.iv_meizi)
+    @BindView(R.id.iv_meizi)
     ImageView image;
 
     public static DetailFragment newInstance(String url) {
@@ -70,15 +73,13 @@ public class DetailFragment extends Fragment implements RequestListener<String, 
     }
 
     @Override
-    public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
-        return true;
+    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+        return false;
     }
 
     @Override
-    public boolean onResourceReady(GlideDrawable resource, String model,
-                                   Target<GlideDrawable> target,
-                                   boolean isFromMemoryCache, boolean isFirstResource) {
-        image.setImageDrawable(resource);
+    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+        image.setImageDrawable((Drawable) target);
         return true;
     }
 

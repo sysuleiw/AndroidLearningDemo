@@ -6,12 +6,13 @@ import android.view.MenuItem;
 
 import com.example.androidlearningdemo.R;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class AboutActivity extends BaseActivity {
 
-    @Bind(R.id.tb_about)
+
+    @BindView(R.id.tb_about)
     Toolbar tbAbout;
 
     @Override

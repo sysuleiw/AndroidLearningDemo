@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.realm.Realm;
 import io.realm.RealmResults;
@@ -37,12 +37,15 @@ import io.realm.RealmResults;
 public class MainActivity extends BaseActivity
         implements SwipeRefreshLayout.OnRefreshListener, OnMeiziClickListener {
 
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @Bind(R.id.rv_main)
+
+    @BindView(R.id.rv_main)
     RecyclerView mainRecyclerView;
-    @Bind(R.id.srl_main)
+
+    @BindView(R.id.srl_main)
     SwipeRefreshLayout swipeRefreshLayout;
+
     private Realm realm;
     private MeiziRecyclerAdapter meiziAdapter;
     public List<Meizi> meizis;
@@ -83,7 +86,7 @@ public class MainActivity extends BaseActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+//        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
@@ -92,13 +95,13 @@ public class MainActivity extends BaseActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+//        int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_about) {
-            startActivity(new Intent(this,AboutActivity.class));
-            return true;
-        }
+//        if (id == R.id.action_about) {
+//            startActivity(new Intent(this,AboutActivity.class));
+//            return true;
+//        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -141,7 +144,7 @@ public class MainActivity extends BaseActivity
 
     private int loadDataFromDB() {
         RealmResults<Meizi> results = realm.where(Meizi.class)
-                .findAllSorted("publishedAt", false);
+                .findAll();
         meizis.clear();
         meizis.addAll(results);
         return meizis.size();
@@ -233,7 +236,10 @@ public class MainActivity extends BaseActivity
                             mergeList(meizis, temp);
                         }
                         return GET_LATEST;
-                    } else return -1;
+                    } else
+                    {
+                        return -1;
+                    }
                 }
                 case GET_MORE: {
                     List<Meizi> temp = sparkRetrofit.getLatest(page);
@@ -241,7 +247,10 @@ public class MainActivity extends BaseActivity
                         meizis.addAll(temp);
                         page++;
                         return GET_MORE;
-                    } else return -1;
+                    } else
+                    {
+                        return -1;
+                    }
                 }
                 default:
                     return -1;

@@ -16,12 +16,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DetailActivity extends BaseActivity {
 
-    @Bind(R.id.pager)
+    @BindView(R.id.pager)
     ViewPager pager;
     private ArrayList<String> meiziUrls;
     private int index;

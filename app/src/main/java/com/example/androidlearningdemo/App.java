@@ -13,9 +13,8 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
 
-        Realm.setDefaultConfiguration(new RealmConfiguration.Builder(this)
-                .schemaVersion(1)
-                .deleteRealmIfMigrationNeeded()
-                .build());
+        Realm.init(this);
+        RealmConfiguration config = new RealmConfiguration.Builder().schemaVersion(1).deleteRealmIfMigrationNeeded().build();
+        Realm.setDefaultConfiguration(config);
     }
 }

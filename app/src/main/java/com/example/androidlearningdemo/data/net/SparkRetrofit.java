@@ -12,7 +12,6 @@ import com.google.gson.GsonBuilder;
 import com.example.androidlearningdemo.data.net.api.GankApi;
 import com.example.androidlearningdemo.data.dao.MeiziDAO;
 import com.example.androidlearningdemo.data.model.Meizi;
-import com.squareup.okhttp.OkHttpClient;
 
 import java.io.IOException;
 import java.util.List;
@@ -20,8 +19,9 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
 import io.realm.RealmObject;
-import retrofit.GsonConverterFactory;
-import retrofit.Retrofit;
+import okhttp3.OkHttpClient;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.Retrofit;
 
 /**
  * Created by Spark on 12/13/2015.
@@ -49,8 +49,12 @@ public class SparkRetrofit {
 
     public SparkRetrofit(Context context) {
         this.context = context;
-        OkHttpClient client = new OkHttpClient();
-        client.setReadTimeout(12, TimeUnit.SECONDS);
+
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(10,TimeUnit.SECONDS)
+                .readTimeout(12,TimeUnit.SECONDS)
+                .build();
+
 
         retrofit = new Retrofit.Builder()
                 .baseUrl("https://gank.avosapps.com/api/")
@@ -80,8 +84,8 @@ public class SparkRetrofit {
             for (Meizi meizi : result.results) {
                 try {
                     bitmap = Glide.with(context)
-                            .load(meizi.getUrl())
                             .asBitmap()
+                            .load(meizi.getUrl())
                             .diskCacheStrategy(DiskCacheStrategy.ALL)
                             .into(-1, -1)
                             .get();

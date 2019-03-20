@@ -31,7 +31,7 @@ public class MeiziDAO {
         realm = Realm.getDefaultInstance();
         realm.beginTransaction();
         RealmResults<Meizi> results = realm.where(Meizi.class).
-                findAllSorted("publishedAt", false);
+                findAll();
         date = DateUtil.format(results.get(0).getPublishedAt());
         Log.d("MeiziDAO", "getDateYear" + date[0]);
         realm.close();

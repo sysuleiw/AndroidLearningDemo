@@ -1,14 +1,14 @@
 package com.example.androidlearningdemo.ui.widget;
 
 import android.content.Context;
+import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
-import android.widget.ImageView;
 
 /**
  * Created by Spark on 12/10/2015.
  * resize the pic as imposed by parent
  */
-public class RatioImageView extends ImageView {
+public class RatioImageView extends AppCompatImageView {
 
     private int originalWidth;
     private int originalHeight;
