@@ -1,124 +1,129 @@
 package com.example.androidlearningdemo.data.model;
 
-import java.util.Date;
-
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
+import java.util.List;
 
 /**
- * Created by Spark on 12/10/2015.
+ * @author wanglei
  */
-public class Meizi extends RealmObject{
-    @PrimaryKey
-    private String objectId;
-    private String url;
-    private Date publishedAt;
-    private Date createdAt;
-    private Date updatedAt;
-    private String who;
-    private String desc;
-    private String type;
-    private boolean used;
-    private int width;
-    private int height;
+public class Meizi {
 
-    public int getWidth() {
-        return width;
+    /**
+     * error : false
+     * results : [{"_id":"5c6a4ae99d212226776d3256","createdAt":"2019-02-18T06:04:25.571Z","desc":"2019-02-18","publishedAt":"2019-02-18T06:05:41.975Z","source":"web","type":"福利","url":"https://ws1.sinaimg.cn/large/0065oQSqly1g0ajj4h6ndj30sg11xdmj.jpg","used":true,"who":"lijinshanmx"}]
+     */
+
+    private boolean error;
+    private List<ResultsBean> results;
+
+    public boolean isError() {
+        return error;
     }
 
-    public void setWidth(int width) {
-        this.width = width;
+    public void setError(boolean error) {
+        this.error = error;
     }
 
-    public int getHeight() {
-        return height;
+    public List<ResultsBean> getResults() {
+        return results;
     }
 
-    public void setHeight(int height) {
-        this.height = height;
+    public void setResults(List<ResultsBean> results) {
+        this.results = results;
     }
 
-    public String getWho() {
-        return who;
-    }
+    public static class ResultsBean {
+        /**
+         * _id : 5c6a4ae99d212226776d3256
+         * createdAt : 2019-02-18T06:04:25.571Z
+         * desc : 2019-02-18
+         * publishedAt : 2019-02-18T06:05:41.975Z
+         * source : web
+         * type : 福利
+         * url : https://ws1.sinaimg.cn/large/0065oQSqly1g0ajj4h6ndj30sg11xdmj.jpg
+         * used : true
+         * who : lijinshanmx
+         */
 
-    public void setWho(String who) {
-        this.who = who;
-    }
+        private String _id;
+        private String createdAt;
+        private String desc;
+        private String publishedAt;
+        private String source;
+        private String type;
+        private String url;
+        private boolean used;
+        private String who;
 
-    public String getType() {
-        return type;
-    }
+        public String get_id() {
+            return _id;
+        }
 
-    public void setType(String type) {
-        this.type = type;
-    }
+        public void set_id(String _id) {
+            this._id = _id;
+        }
 
-    public boolean isUsed() {
-        return used;
-    }
+        public String getCreatedAt() {
+            return createdAt;
+        }
 
-    public void setUsed(boolean used) {
-        this.used = used;
-    }
+        public void setCreatedAt(String createdAt) {
+            this.createdAt = createdAt;
+        }
 
-    public Date getCreatedAt() {
-        return createdAt;
-    }
+        public String getDesc() {
+            return desc;
+        }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
+        public void setDesc(String desc) {
+            this.desc = desc;
+        }
 
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
+        public String getPublishedAt() {
+            return publishedAt;
+        }
 
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    }
+        public void setPublishedAt(String publishedAt) {
+            this.publishedAt = publishedAt;
+        }
 
-    public Date getPublishedAt() {
-        return publishedAt;
-    }
+        public String getSource() {
+            return source;
+        }
 
-    public void setPublishedAt(Date publishedAt) {
-        this.publishedAt = publishedAt;
-    }
+        public void setSource(String source) {
+            this.source = source;
+        }
 
-    public String getDesc() {
-        return desc;
-    }
+        public String getType() {
+            return type;
+        }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
+        public void setType(String type) {
+            this.type = type;
+        }
 
-    public String getObjectId() {
-        return objectId;
-    }
+        public String getUrl() {
+            return url;
+        }
 
-    public void setObjectId(String objectId) {
-        this.objectId = objectId;
-    }
+        public void setUrl(String url) {
+            this.url = url;
+        }
 
-    public String getUrl() {
-        return url;
-    }
+        public boolean isUsed() {
+            return used;
+        }
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
+        public void setUsed(boolean used) {
+            this.used = used;
+        }
 
-//    @Override
-//    public boolean equals(Object o) {
-////        return super.equals(o);
-//        Meizi objet = (Meizi)o;
-//
-//        if(this.getObjectId().equals(objet.getObjectId())){
-//            return true;
-//        }else {
-//            return false;
-//        }
-//    }
+        public String getWho() {
+            return who;
+        }
+
+        public void setWho(String who) {
+            this.who = who;
+        }
+    }
 }

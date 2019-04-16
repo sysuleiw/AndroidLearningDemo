@@ -5,12 +5,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.example.androidlearningdemo.R;
+import com.example.androidlearningdemo.ui.activity.base.BaseActivity;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
+/**
+ * @author wanglei
+ */
 public class AboutActivity extends BaseActivity {
-
 
     @BindView(R.id.tb_about)
     Toolbar tbAbout;
@@ -19,7 +21,6 @@ public class AboutActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
-        ButterKnife.bind(this);
         setSupportActionBar(tbAbout);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -35,5 +36,10 @@ public class AboutActivity extends BaseActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public int getContentViewId() {
+        return R.layout.activity_about;
     }
 }
