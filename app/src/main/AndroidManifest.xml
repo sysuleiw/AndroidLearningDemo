@@ -36,7 +36,7 @@
             android:label="@string/title_activity_about"
             android:theme="@style/AppTheme.NoActionBar"/>
 
-        <activity android:name=".ui"></activity>
+        <activity android:name=".ui.activity.DetailActivity"></activity>
     </application>
 
 </manifest>
