@@ -1,8 +1,6 @@
 package com.example.androidlearningdemo.ui.adapter;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.example.androidlearningdemo.R;
@@ -45,6 +43,7 @@ public class MeiziAdapter extends BaseRecyclerAdapter<Meizi.ResultsBean, MeiziAd
 
         @Override
         protected void bindData(Meizi.ResultsBean data) {
+            itemImageView.setOriginalSize(data.getWidth(),data.getHeight());
             ImageLoader.loadImage(data.getUrl(),itemImageView,itemImageView.getContext());
         }
 
@@ -57,7 +56,4 @@ public class MeiziAdapter extends BaseRecyclerAdapter<Meizi.ResultsBean, MeiziAd
         }
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
-    }
 }

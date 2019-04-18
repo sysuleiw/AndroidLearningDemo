@@ -30,12 +30,6 @@ public class MeiziFragment extends BaseFragment<MeiziPresenter> implements IMeiz
 
     BaseRecyclerOnScrollListener scrollListener;
 
-    public MeiziFragment() {
-    }
-
-    public static MeiziFragment newInstance() {
-        return new MeiziFragment();
-    }
 
     @Override
     protected MeiziPresenter getPresenter() {

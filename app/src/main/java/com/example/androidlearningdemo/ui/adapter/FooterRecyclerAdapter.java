@@ -83,6 +83,7 @@ public class FooterRecyclerAdapter<D, VH extends BaseRecyclerAdapter.BaseViewHol
         return new SimpleViewHolder(progressBar);
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
         int type = getItemViewType(i);

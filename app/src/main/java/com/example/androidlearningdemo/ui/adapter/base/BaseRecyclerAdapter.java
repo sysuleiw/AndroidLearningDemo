@@ -21,17 +21,15 @@ public abstract class BaseRecyclerAdapter<D, VH extends BaseRecyclerAdapter.Base
 
     @NonNull
     @Override
-    public VH onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-
-     View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.meizi_rv_item, viewGroup,
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.meizi_rv_item, viewGroup,
                 false);
         return createViewHolder(view);
     }
 
-
-    public void onBindViewHolder(@NonNull VH viewHolder, int i) {
-
-        viewHolder.bindData(data.get(i));
+    @Override
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+        ((BaseRecyclerAdapter.BaseViewHolder)viewHolder).bindData(data.get(i));
     }
 
 

@@ -20,6 +20,7 @@ import butterknife.BindView;
  * @author wanglei
  */
 public class HomeActivity extends BaseActivity<HomePresenter> implements IHome {
+
     @BindView(R.id.vp_main)
     ViewPager viewPager;
 
@@ -36,7 +37,7 @@ public class HomeActivity extends BaseActivity<HomePresenter> implements IHome {
     @Override
     public void initSubViews(View view) {
         super.initSubViews(view);
-        setSupportActionBar(toolbar);
+//        setSupportActionBar(toolbar);
         adapter = new BaseFragmentPagerAdapter<>(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
     }

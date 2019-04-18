@@ -16,5 +16,7 @@ public class App extends Application {
         Realm.init(this);
         RealmConfiguration config = new RealmConfiguration.Builder().schemaVersion(1).deleteRealmIfMigrationNeeded().build();
         Realm.setDefaultConfiguration(config);
+
+        MeiziContext.getInstance().init(this);
     }
 }

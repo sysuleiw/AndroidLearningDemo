@@ -16,16 +16,11 @@ import butterknife.ButterKnife;
 
 /**
  * @author wanglei
+ * 和BaseActivity作用类似绑定contentview，subview，data及presenter
  */
 public class BaseFragment<T extends BasePresenter> extends Fragment implements IView {
 
     protected T mPresenter;
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        this.initData();
-    }
 
     @Nullable
     @Override
@@ -34,10 +29,11 @@ public class BaseFragment<T extends BasePresenter> extends Fragment implements I
         ButterKnife.bind(this,containerView);
         initPresenter();
         initSubViews(containerView);
+        initData();
         return containerView;
     }
 
-     @Override
+    @Override
     public void onDestroy() {
         super.onDestroy();
         if (mPresenter != null)

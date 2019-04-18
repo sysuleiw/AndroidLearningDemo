@@ -3,6 +3,7 @@ package com.example.androidlearningdemo.data.model;
 import java.util.List;
 
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 
 /**
@@ -23,7 +24,9 @@ public class MeiziRealmEntity extends RealmObject {
      * who : lijinshanmx
      */
 
+    @PrimaryKey
     private String _id;
+
     private String createdAt;
     private String desc;
     private String publishedAt;
@@ -32,7 +35,24 @@ public class MeiziRealmEntity extends RealmObject {
     private String url;
     private boolean used;
     private String who;
+    private int width;
+    private int height;
 
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
     public String get_id() {
         return _id;
     }

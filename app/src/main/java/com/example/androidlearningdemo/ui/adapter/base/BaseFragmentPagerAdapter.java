@@ -9,6 +9,7 @@ import java.util.List;
 
 /**
  * @author wanglei
+ * fragmentAdapter就是提供Fragment的delegate
  */
 public class BaseFragmentPagerAdapter<T extends Fragment> extends FragmentStatePagerAdapter {
     protected List<T> fragments;
@@ -33,13 +34,13 @@ public class BaseFragmentPagerAdapter<T extends Fragment> extends FragmentStateP
     }
 
     @Override
-    public Fragment getItem(int i) {
-        return fragments.get(i);
+    public Fragment getItem(int position) {
+        return fragments.get(position);
     }
 
     @Override
     public int getCount() {
-        return fragments.size();
+        return (null == fragments) ? 0 : fragments.size();
     }
 
     @Nullable

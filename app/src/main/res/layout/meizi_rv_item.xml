@@ -6,7 +6,7 @@
     android:layout_margin="3dp"
     app:cardCornerRadius="6dp">
 
-    <com.spark.meizi.widget.ScaleImageView
+    <com.example.androidlearningdemo.ui.widget.ScaleImageView
         android:id="@+id/iv_item"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
